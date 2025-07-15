@@ -8,7 +8,7 @@ genai.configure(api_key="YOUR_API_KEY_HERE")  # <-- Replace with your real API k
 model = genai.GenerativeModel(model_name="models/gemini-pro")
 
 # Streamlit app
-st.title("Gemini Chatbot Demo")
+st.title("Ankita Gemini Chatbot Demo")
 
 prompt = st.text_input("Enter your prompt here:")
 
