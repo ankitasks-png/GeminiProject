@@ -9,8 +9,8 @@ headers = {
     "Content-Type": "application/json",
 }
 
-# USER INPUT HERE
-prompt = input("📝 Enter your prompt: ")
+#  INPUT
+prompt = input(" Enter your prompt: ")
 
 
 data = {
@@ -29,8 +29,8 @@ if response.status_code == 200:
     gemini_response = response.json()
     try:
         text_response = gemini_response['candidates'][0]['content']['parts'][0]['text']
-        print("\n✅ Gemini says:\n", text_response)
+        print("\n Gemini says:\n", text_response)
     except (KeyError, IndexError):
-        print("⚠️ Unexpected response structure:\n", gemini_response)
+        print("⚠ Unexpected response structure:\n", gemini_response)
 else:
-    print("❌ Error:", response.status_code, response.text)
+    print(" Error:", response.status_code, response.text)
