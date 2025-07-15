@@ -1,7 +1,7 @@
 import requests
 import json
 
-# ✅ Replace with your actual Gemini API key
+#  Gemini API key
 API_KEY = "AIzaSyBK5yWIQotaB1G7a23yPQrAYQhyeMCZiaQ"
 API_URL = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key={API_KEY}"
 
@@ -9,10 +9,10 @@ headers = {
     "Content-Type": "application/json",
 }
 
-# 👇 USER INPUT HERE
+# USER INPUT HERE
 prompt = input("📝 Enter your prompt: ")
 
-# 💡 Build the request
+
 data = {
     "contents": [
         {
@@ -21,10 +21,10 @@ data = {
     ]
 }
 
-# 🚀 Send the request
+# request
 response = requests.post(API_URL, headers=headers, data=json.dumps(data))
 
-# 📦 Handle response
+#  response
 if response.status_code == 200:
     gemini_response = response.json()
     try:
