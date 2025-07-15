@@ -1,25 +1,21 @@
 import streamlit as st
 import google.generativeai as genai
 
-#  API key
-genai.configure(api_key="AIzaSyBK5yWIQotaB1G7a23yPQrAYQhyeMCZiaQ")
+genai.configure(api_key=st.secrets["AIzaSyBK5yWIQotaB1G7a23yPQrAYQhyeMCZiaQ"])  # Use your actual key locally
 
+model = genai.GenerativeModel(model_name="models/gemini-pro")
 
-model = genai.GenerativeModel(model_name="models/chat-bison-001")
+st.title("Ankita Gemini Chatbot")
 
-st.set_page_config(page_title="Ankita Gemini Chatbot Google Bootcamp", layout="centered")
-
-st.title("💬 Ankita Gemini AI Chatbot- Google Bootcamp")
-
-prompt = st.text_input("Enter your prompt:")
+prompt = st.text_input("Ask something:")
 
 if st.button("Generate"):
-    if prompt.strip():
+    if prompt:
         try:
             response = model.generate_content(prompt)
-            st.markdown(" Gemini says:")
+            st.write("Gemini says:")
             st.success(response.text)
         except Exception as e:
             st.error(f" Error: {e}")
     else:
-        st.warning("Please type something before clicking Generate!")
+        st.warning("Please enter a prompt.")
