@@ -1,11 +1,11 @@
 import streamlit as st
 import google.generativeai as genai
 
-# 🔐 Configure with your API key from Streamlit secrets
+# 🔐 API Key via Streamlit secrets
 genai.configure(api_key=st.secrets["api_key"])
 
-# 🧠 Load Gemini Pro model
-model = genai.GenerativeModel(model_name="models/gemini-pro")
+# ✅ Use older supported model for Streamlit Cloud
+model = genai.GenerativeModel(model_name="models/chat-bison-001")
 
 # 🎨 Streamlit UI
 st.set_page_config(page_title="Gemini Chatbot", page_icon="💬")
