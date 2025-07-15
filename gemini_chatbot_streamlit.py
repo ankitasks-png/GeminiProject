@@ -7,9 +7,9 @@ genai.configure(api_key="AIzaSyBK5yWIQotaB1G7a23yPQrAYQhyeMCZiaQ")
 
 model = genai.GenerativeModel(model_name="models/chat-bison-001")
 
-st.set_page_config(page_title="Gemini Chatbot", layout="centered")
+st.set_page_config(page_title="Ankita Gemini Chatbot Google Bootcamp", layout="centered")
 
-st.title("💬 Ankita's Gemini AI Chatbot")
+st.title("💬 Ankita Gemini AI Chatbot- Google Bootcamp")
 
 prompt = st.text_input("Enter your prompt:")
 
