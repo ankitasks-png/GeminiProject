@@ -9,7 +9,7 @@ model = genai.GenerativeModel(model_name="models/chat-bison-001")
 
 st.set_page_config(page_title="Gemini Chatbot", layout="centered")
 
-st.title("💬 Gemini AI Chatbot")
+st.title("💬 Ankita's Gemini AI Chatbot")
 
 prompt = st.text_input("Enter your prompt:")
 
