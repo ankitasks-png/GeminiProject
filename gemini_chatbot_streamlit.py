@@ -1,26 +1,28 @@
 import streamlit as st
 import google.generativeai as genai
 
-# Your actual API key
-genai.configure(api_key="AIzaSyBK5yWIQotaB1G7a23yPQrAYQhyeMCZiaQ")
+# 🔐 Configure with your API key from Streamlit secrets
+genai.configure(api_key=st.secrets["api_key"])
 
-# Use supported model (chat-bison-001 works for 0.8.5)
+# 🧠 Load Gemini Pro model
 model = genai.GenerativeModel(model_name="models/gemini-pro")
 
+# 🎨 Streamlit UI
+st.set_page_config(page_title="Gemini Chatbot", page_icon="💬")
+st.title("💬 Gemini Chatbot (Gen AI Bootcamp Project)")
+st.markdown("Ask something to Gemini:")
 
-st.set_page_config(page_title="Gemini Chatbot", layout="centered")
-
-st.title("💬 Gemini AI Chatbot")
-
-prompt = st.text_input("Enter your prompt:")
+# 📝 User input
+prompt = st.text_input("")
 
 if st.button("Generate"):
-    if prompt.strip():
+    if prompt.strip() == "":
+        st.warning("Please enter a prompt.")
+    else:
         try:
-            response = model.generate_content(prompt)
-            st.markdown("### ✨ Gemini says:")
-            st.success(response.text)
+            with st.spinner("Thinking..."):
+                response = model.generate_content(prompt)
+                st.success("Here's what Gemini says:")
+                st.markdown(response.text)
         except Exception as e:
             st.error(f"❌ Error: {e}")
-    else:
-        st.warning("Please type something before clicking Generate!")
